@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import './App.css'
 
-const Laskuri = (props) => {   //komponentti saa palauttaa ainoastaan yhden elementin(elemetnin sisällä voi olla monta elementtiä kuitenkin)
+const Laskuri = ({huomio}) => {   //komponentti saa palauttaa ainoastaan yhden elementin(elemetnin sisällä voi olla monta elementtiä kuitenkin)
 
 //Komponentin tilan määritys
-const [luku, setLuku] = React.useState(0)
+const [luku, setLuku] = useState(0)
 
   return (
     <>
@@ -12,7 +12,7 @@ const [luku, setLuku] = React.useState(0)
 
       <button onClick={() => setLuku(luku + 1)}>+</button> 
 
-      <button onClick={props.huomio}>huomio</button>
+      <button onClick={huomio}>huomio</button>
 
     </>
   )

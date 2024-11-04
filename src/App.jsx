@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Laskuri from './laskuri' 
 import Viesti from './viesti'
+import Posts from './Posts'
 
 const App = () => {
 
@@ -14,7 +15,7 @@ const huomio = () => {
   alert("Huomio huomio")
 }
 
-// MYÖS NÄIN VOISI TEHDÄ, MUTTA TÄSSÄ TOTEUTUKSESSA "HELLO FROM REAACT" PITÄISI SANOA MONTA KERTAA:
+// MYÖS NÄIN VOISI TEHDÄ, MUTTA TÄSSÄ TOTEUTUKSESSA "HELLO FROM REACT" PITÄISI SANOA MONTA KERTAA:
 // if (showLaskuri === true)
 // {
 //   return(
@@ -29,6 +30,8 @@ const huomio = () => {
   return (
     <div className='App'>
       <h1>Helloo</h1>
+
+      <Posts />
 
       {showLaskuri && <Laskuri huomio={huomio} />}
 
