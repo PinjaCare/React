@@ -26,6 +26,14 @@
   margin-bottom: 2%;
 }
 
+.nappi {
+  border-radius: 10px;
+  margin-left: 10px;
+  font-size: 26px;
+  background-color: green;
+  color: darkkhaki;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
