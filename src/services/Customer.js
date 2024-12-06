@@ -8,7 +8,16 @@ const getAll = () => {
 }
 
 const create = newCustomer => {
-    return axios.post(baseUrl, newCustomer)
+    return axios.post(baseUrl, newCustomer)                     //parametreinä url ja toisena olio mikä luodaan 
 }
 
- export default { getAll, create }
+const remove = id => {
+    return axios.delete(`${baseUrl}/${id}`)
+}
+
+const update = (object) => {
+    return axios.put(`${baseUrl}/${object.customerId}`, object)    //parametreinä url ja toisena olio mitä muokataan
+}
+
+
+export default { getAll, create, remove, update }
