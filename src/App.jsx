@@ -5,6 +5,13 @@ import Viesti from './Viesti'
 import Posts from './Posts'
 import CustomerList from './CustomerList'
 import Message from './Message'
+import UserList from './UserList'
+
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 const App = () => {
 
@@ -15,45 +22,46 @@ const [showMessage, setShowMessage] = useState(false)
 const [message, setMessage] = useState('')
 const [isPositive, setIsPositive] = useState(false)
 
+return (
+  <div className="App">
+    <Router>
+    
+        <Navbar bg="dark" variant="dark">
+          <Nav className="mr-auto">
+              <Nav.Link href='/customers'>Customers</Nav.Link>
+              <Nav.Link href='/posts'>Posts</Nav.Link>
+              <Nav.Link href='/users'>Users</Nav.Link>
+              <Nav.Link href='/laskuri'>Laskuri</Nav.Link>
+          </Nav>
+        </Navbar>
+                      
+      <h1>Northwind Corporation</h1>
 
-const huomio = () => {
-  alert("alert alertttt!")
-}
+      {showMessage && <Message message={message} isPositive={isPositive} />}
 
-// MYÖS NÄIN VOISI TEHDÄ, MUTTA TÄSSÄ TOTEUTUKSESSA "HELLO FROM REACT" PITÄISI SANOA MONTA KERTAA:
-// if (showLaskuri === true)
-// {
-//   return(
-//   <div className='App'>
-//       <h1>Helloo</h1>
+      <Routes>
+        <Route path="/customers"
+        element={<CustomerList setMessage={setMessage} setIsPositive={setIsPositive} 
+        setShowMessage={setShowMessage} />}>
+        </Route>
 
-//       {showLaskuri && <Laskuri huomio={huomio} />}             
-//   </div>
-// )
-// }
+        <Route path="/users"
+        element={<UserList setMessage={setMessage} setIsPositive={setIsPositive} 
+        setShowMessage={setShowMessage} />}>
+        </Route>
 
-  return ( //returnissa on jsx koodia, eli kaikki mikä aaltosulkeissa on javascriptiä ja kaikki muu html
-    <div className='App'>
-      <h1>Helloo</h1>
-
-      {showMessage && <Message message={message} isPositive={isPositive}/> /*aaltosulkeissa aina javascript*/}
-
-      <CustomerList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}/>
-
-      <Posts />
-
-      {showLaskuri && <Laskuri huomio={huomio} />}
-
-      {/* {showLaskuri === true ? <Laskuri /> : <button>näytä</button>} <------ tekee saman asian kuin ylempi rivi */}
-
-      {showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Piilota laskuri</button>}
-
-      {!showLaskuri && <button onClick={() => setShowLaskuri(!showLaskuri)}>Näytä laskuri</button>}
-
-      <Viesti teksti="tervehdys"/>
-
-    </div>
-  )
+        <Route path="/posts"
+        element={<Posts />}>
+        </Route>
+        
+        <Route path="/laskuri" 
+        element={<Laskuri />}>
+      </Route>
+      
+      </Routes>
+    </Router>
+  </div>
+)
 }
 
 export default App
